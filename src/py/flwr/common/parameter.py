@@ -24,15 +24,16 @@ from .typing import NDArray, NDArrays, Parameters
 
 
 def ndarrays_to_parameters(ndarrays: NDArrays) -> Parameters:
-    """Convert NumPy ndarrays to parameters object."""
-    tensors = [ndarray_to_bytes(ndarray) for ndarray in ndarrays]
+    """Send the tensors as is."""
+    tensors = ndarrays #[ndarray_to_bytes(ndarray) for ndarray in ndarrays]
     return Parameters(tensors=tensors, tensor_type="numpy.ndarray")
 
 
 def parameters_to_ndarrays(parameters: Parameters) -> NDArrays:
-    """Convert parameters object to NumPy ndarrays."""
-    return [bytes_to_ndarray(tensor) for tensor in parameters.tensors]
+    """Send the tensors as is"""
 
+    #return [bytes_to_ndarray(tensor) for tensor in parameters.tensors]
+    return [tensor for tensor in parameters.tensors]
 
 def ndarray_to_bytes(ndarray: NDArray) -> bytes:
     """Serialize NumPy ndarray to bytes."""
